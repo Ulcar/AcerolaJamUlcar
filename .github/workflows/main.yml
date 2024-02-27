@@ -45,10 +45,11 @@ jobs:
       - uses: actions/upload-pages-artifact@v3
         with:
           name: Build
-          path: build
+          path: github-pages
   deploy:
      # Add a dependency to the build job
      needs: build
+
 
      # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
      permissions:
@@ -65,7 +66,6 @@ jobs:
      steps:
        - name: Deploy to GitHub Pages
          id: deployment
-         artifact_name: build
          uses: actions/deploy-pages@v4 # or specific "vX.X.X" version tag for this action
  
     
