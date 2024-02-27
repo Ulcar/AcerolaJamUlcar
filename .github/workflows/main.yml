@@ -3,8 +3,14 @@ name: Actions 😎
 on: [push, pull_request]
 
 jobs:
+
+
+  
   build:
     name: Build my project ✨
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
       # Checkout
@@ -36,3 +42,8 @@ jobs:
         with:
           name: Build
           path: build
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+        
+                
